@@ -141,6 +141,69 @@
           <textarea name="message" class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
         </div>
 
+        <button type="submit" style="display: block; width: 100%; background: linear-gradient(135deg, var(--red-brand) 0%, #A80E0E 100%); color: #FFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 20px; border-radius: 99px; border: none; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 20px var(--red-glow); text-align: center;">
+          Submit Ticket
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span style="font-family:'Cinzel', serif; color:var(--red-brand); font-weight:700;">Grand Varexis</span>
+        <span>&copy; All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#">User Agreement</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+        <input type="hidden" name="access_key" value="a068fada-5040-420e-914d-4b0805f58a41">
+        
+        <!-- EMAIL SUBJECT -->
+        <input type="hidden" name="subject" value="New Grand Varexis Player Support Ticket">
+        
+        <!-- SPAM BOT CHECK -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <div class="form-group">
+          <label class="form-label">In-Game Name / User ID</label>
+          <input type="text" name="player_id" class="form-input" placeholder="e.g. VarexisBoss#1092" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Issue Category</label>
+          <select name="category" class="form-input" style="background: rgba(10,5,11,0.9);" required>
+            <option value="">Select a topic...</option>
+            <option value="Account & Recovery">Account & Recovery</option>
+            <option value="Billing & Purchases">Billing & Purchases</option>
+            <option value="Bug Report">Bug Report</option>
+            <option value="Other Inquiry">Other Inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
+        </div>
+
         <button type="submit" class="nav-btn store-btn" style="width: 100%; justify-content: center; margin-top: 10px; cursor: pointer;">
           Submit Ticket
         </button>
