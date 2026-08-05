@@ -151,7 +151,7 @@
           <textarea name="message" class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
         </div>
 
-        <button type="submit" id="submit-btn" class="nav-btn" style="display: block; width: 100%; margin-top: 15px; text-align: center;">
+        <button type="submit" id="submit-btn" style="display: block; width: 100%; background: linear-gradient(135deg, var(--red-brand) 0%, #A80E0E 100%); color: #FFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 20px; border-radius: 99px; border: none; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 20px var(--red-glow); text-align: center;">
           Submit Ticket
         </button>
       </form>
@@ -160,29 +160,27 @@
   </div>
 </section>
 
-<!-- MODULAR FOOTER CONTAINER -->
-<div id="footer-placeholder"></div>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span style="font-family:'Cinzel', serif; color:var(--red-brand); font-weight:700;">Grand Varexis</span>
+        <span>&copy; All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="terms.html">User Agreement</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script src="script.js"></script>
 
-<!-- DYNAMIC FOOTER, AJAX SUBMISSION & MOBILE TOUCH FIX -->
+<!-- AJAX SUBMISSION HANDLER -->
 <script>
-  // Load modular footer dynamically
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    });
-
-  // Prevent mobile touch focus sticking
-  document.addEventListener('touchstart', function() {}, {passive: true});
-  document.querySelectorAll('.nav-btn, .store-btn').forEach(button => {
-    button.addEventListener('touchend', function() {
-      this.blur();
-    });
-  });
-
-  // AJAX Form Handler
   const form = document.getElementById('support-form');
   const successMsg = document.getElementById('form-success-msg');
 
