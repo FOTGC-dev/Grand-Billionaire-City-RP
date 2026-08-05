@@ -104,6 +104,16 @@
     </div>
 
     <div style="max-width: 600px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 24px; padding: 36px 28px; backdrop-filter: blur(20px);">
+      
+      <!-- SUCCESS NOTIFICATION BOX (HIDDEN BY DEFAULT) -->
+      <div id="form-success-msg" style="display: none; text-align: center; padding: 20px 0;">
+        <div style="font-size: 42px; margin-bottom: 12px;">🛡️</div>
+        <h3 style="font-family: 'Cinzel', serif; font-size: 22px; color: #FFF; margin-bottom: 8px;">Ticket Dispatched</h3>
+        <p style="color: #A0A0A0; font-size: 13.5px; line-height: 1.6;">Your dossier has been securely transmitted to the Grand Varexis operations team. Check your inbox shortly for updates.</p>
+        <button type="button" onclick="resetSupportForm()" style="background: transparent; color: #E5C158; border: 1px solid rgba(229,193,88,0.3); padding: 10px 20px; border-radius: 99px; margin-top: 20px; cursor: pointer; font-size: 12px; font-weight: 600;">Submit Another Ticket</button>
+      </div>
+
+      <!-- THE ACTUAL FORM -->
       <form action="https://api.web3forms.com/submit" method="POST" id="support-form">
         
         <!-- WEB3FORMS ACCESS KEY -->
@@ -141,7 +151,7 @@
           <textarea name="message" class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
         </div>
 
-        <button type="submit" style="display: block; width: 100%; background: linear-gradient(135deg, var(--red-brand) 0%, #A80E0E 100%); color: #FFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 20px; border-radius: 99px; border: none; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 20px var(--red-glow); text-align: center;">
+        <button type="submit" id="submit-btn" style="display: block; width: 100%; background: linear-gradient(135deg, var(--red-brand) 0%, #A80E0E 100%); color: #FFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 20px; border-radius: 99px; border: none; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 20px var(--red-glow); text-align: center;">
           Submit Ticket
         </button>
       </form>
@@ -168,121 +178,52 @@
 </footer>
 
 <script src="script.js"></script>
-</body>
-</html>
-        <input type="hidden" name="access_key" value="a068fada-5040-420e-914d-4b0805f58a41">
-        
-        <!-- EMAIL SUBJECT -->
-        <input type="hidden" name="subject" value="New Grand Varexis Player Support Ticket">
-        
-        <!-- SPAM BOT CHECK -->
-        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-        <div class="form-group">
-          <label class="form-label">In-Game Name / User ID</label>
-          <input type="text" name="player_id" class="form-input" placeholder="e.g. VarexisBoss#1092" required>
-        </div>
+<!-- AJAX SUBMISSION HANDLER -->
+<script>
+  const form = document.getElementById('support-form');
+  const successMsg = document.getElementById('form-success-msg');
 
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
-        </div>
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const submitBtn = document.getElementById('submit-btn');
+    
+    submitBtn.textContent = 'Transmitting...';
+    submitBtn.style.opacity = '0.7';
 
-        <div class="form-group">
-          <label class="form-label">Issue Category</label>
-          <select name="category" class="form-input" style="background: rgba(10,5,11,0.9);" required>
-            <option value="">Select a topic...</option>
-            <option value="Account & Recovery">Account & Recovery</option>
-            <option value="Billing & Purchases">Billing & Purchases</option>
-            <option value="Bug Report">Bug Report</option>
-            <option value="Other Inquiry">Other Inquiry</option>
-          </select>
-        </div>
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+        } else {
+            alert(json.message);
+            submitBtn.textContent = 'Submit Ticket';
+            submitBtn.style.opacity = '1';
+        }
+    })
+    .catch(error => {
+        console.log(error);
+        alert("Something went wrong! Check your connection.");
+        submitBtn.textContent = 'Submit Ticket';
+        submitBtn.style.opacity = '1';
+    });
+  });
 
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea name="message" class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
-        </div>
+  function resetSupportForm() {
+    form.reset();
+    form.style.display = 'block';
+    successMsg.style.display = 'none';
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.textContent = 'Submit Ticket';
+    submitBtn.style.opacity = '1';
+  }
+</script>
 
-        <button type="submit" class="nav-btn store-btn" style="width: 100%; justify-content: center; margin-top: 10px; cursor: pointer;">
-          Submit Ticket
-        </button>
-      </form>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span style="font-family:'Cinzel', serif; color:var(--red-brand); font-weight:700;">Grand Varexis</span>
-        <span>&copy; All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="#">User Agreement</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
-          <input type="text" class="form-input" placeholder="e.g. VarexisBoss#1092" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-input" placeholder="your@email.com" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Issue Category</label>
-          <select class="form-input" style="background: rgba(10,5,11,0.9);" required>
-            <option value="">Select a topic...</option>
-            <option value="account">Account & Recovery</option>
-            <option value="billing">Billing & Purchases</option>
-            <option value="bug">Bug Report</option>
-            <option value="other">Other Inquiry</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
-        </div>
-
-        <button type="submit" class="nav-btn store-btn" style="width: 100%; justify-content: center; margin-top: 10px; cursor: pointer;">
-          Submit Ticket
-        </button>
-      </form>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span style="font-family:'Cinzel', serif; color:var(--red-brand); font-weight:700;">Grand Varexis</span>
-        <span>&copy; All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="#">User Agreement</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
