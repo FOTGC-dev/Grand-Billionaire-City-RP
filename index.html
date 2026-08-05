@@ -1,4 +1,4 @@
-MAINTENANCE!!!!!!!!!!!!!!!
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,32 +132,4 @@ MAINTENANCE!!!!!!!!!!!!!!!
 <!-- Link to your external JavaScript -->
 <script src="script.js"></script>
 </body>
-</html>    </div>
-  </div>
-</section>
-
-<!-- MODULAR FOOTER CONTAINER -->
-<div id="footer-placeholder"></div>
-
-<!-- Link to your external JavaScript -->
-<script src="script.js"></script>
-
-<!-- Dynamic Footer Loader & Mobile Touch Unfocus Script -->
-<script>
-  // Load modular footer dynamically
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    });
-
-  // Prevent mobile touch focus sticking on buttons
-  document.addEventListener('touchstart', function() {}, {passive: true});
-  document.querySelectorAll('.nav-btn, .store-btn').forEach(button => {
-    button.addEventListener('touchend', function() {
-      this.blur();
-    });
-  });
-</script>
-</body>
-</html>
+  </html>
