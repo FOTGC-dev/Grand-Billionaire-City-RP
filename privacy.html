@@ -63,23 +63,24 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span style="font-family:'Cinzel', serif; color:var(--red-brand); font-weight:700;">Grand Varexis</span>
-        <span>&copy; All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="terms.html">User Agreement</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
+<!-- MODULAR FOOTER CONTAINER -->
+<div id="footer-placeholder"></div>
+
+<!-- Dynamic Footer Loader & Mobile Touch Unfocus Script -->
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    });
+
+  document.addEventListener('touchstart', function() {}, {passive: true});
+  document.querySelectorAll('.nav-btn, .store-btn').forEach(button => {
+    button.addEventListener('touchend', function() {
+      this.blur();
+    });
+  });
+</script>
 
 </body>
 </html>
-
