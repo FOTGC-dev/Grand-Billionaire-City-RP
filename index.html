@@ -1,117 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grand Varexis — Rule The City</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Varexis | Ultimate Mobile Roleplay</title>
+    <style>
+        /* ==========================================
+           GRAND VAREXIS DESIGN SYSTEM
+           ========================================== */
+        :root {
+            --bg-midnight: #0B1020;
+            --bg-card: rgba(17, 24, 39, 0.75);
+            --accent-cyan: #00C8FF;
+            --accent-cyan-glow: rgba(0, 200, 255, 0.4);
+            --accent-royal: #3B82F6;
+            --danger: #FF3B3B;
+            --success: #22C55E;
+            --warning: #F59E0B;
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            --border-glass: rgba(0, 200, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0B1020 0%, #111827 60%, #1E3A8A 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* ==========================================
+           NAVIGATION BAR
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 16, 32, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-badge {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-royal));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            box-shadow: 0 0 12px var(--accent-cyan-glow);
+        }
+
+        .nav-logo span {
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        .discord-btn {
+            background: rgba(0, 200, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .discord-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-midnight);
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-emblem {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-royal));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 30px var(--accent-cyan-glow);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px var(--accent-cyan-glow); }
+            100% { box-shadow: 0 0 35px rgba(0, 200, 255, 0.8); }
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            background: linear-gradient(to right, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        /* ==========================================
+           SECTIONS & COMMON STYLES
+           ========================================== */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+            color: var(--accent-cyan);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* ==========================================
+           FEATURE CARDS GRID (Ref: 1000423352.png)
+           ========================================== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px var(--accent-cyan-glow);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 200, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* ==========================================
+           JOBS GRID (Ref: 100042330.png style)
+           ========================================== */
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .job-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-cyan-glow);
+        }
+
+        .job-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .job-pay {
+            color: var(--success);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .job-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-easy { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .badge-med { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge-hard { background: rgba(255, 59, 59, 0.15); color: var(--danger); border: 1px solid rgba(255, 59, 59, 0.3); }
+
+        /* ==========================================
+           FACTIONS CARDS (Ref: 1000423351.png)
+           ========================================== */
+        .factions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .faction-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faction-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-royal);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .faction-img {
+            width: 100%;
+            height: 160px;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .faction-content {
+            padding: 20px;
+        }
+
+        .faction-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+
+        .faction-content p {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           STATS DASHBOARD (Ref: 1000423350.png)
+           ========================================== */
+        .stats-section {
+            background: rgba(17, 24, 39, 0.6);
+            border-top: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--text-main);
+            text-shadow: 0 0 20px var(--accent-cyan-glow);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            color: var(--accent-cyan);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        footer {
+            background: var(--bg-midnight);
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        footer h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="ambient-glow-top"></div>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <a href="#home" class="nav-logo">
+                <div class="logo-badge">GV</div>
+                <span>Grand Varexis</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#jobs">Jobs</a></li>
+                <li><a href="#factions">Factions</a></li>
+            </ul>
+            <a href="#" class="discord-btn">Join Discord</a>
+        </nav>
+    </header>
 
-<!-- NAVIGATION -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="brand-logo">
-      <span class="grand">Grand</span>
-      <span class="varexis">Varexis</span>
-    </a>
-    <div class="nav-right">
-      <a href="https://discord.gg/WNbtdvn65" target="_blank" rel="noopener noreferrer" class="nav-link">Support Desk</a>
-      <a href="#download" class="nav-btn">Play Now</a>
-    </div>
-  </div>
-</nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-emblem">👑</div>
+        <h1>Grand Varexis</h1>
+        <p>Experience the ultimate mobile roleplay adventure. Build your career, own businesses, and write your story.</p>
+        <a href="#" class="discord-btn" style="padding: 12px 28px; font-size: 15px;">Join Discord</a>
+    </section>
 
-<!-- HERO SECTION -->
-<header class="hero">
-  <div class="wrap">
-    
-    <div class="hero-art-container">
-      <div class="hero-art-bg">
-        <h1 class="hero-title">
-          <span class="grand-txt">Grand</span><span class="varexis-txt">Varexis</span>
-        </h1>
-        <div class="title-bar"></div>
-      </div>
-    </div>
-
-    <p class="hero-desc">Enter an elite underworld of luxury, power, and high stakes. Build your empire, command real estate, or run the streets in real-time online RP.</p>
-
-    <div id="download" class="store-row">
-      <a class="store-btn" href="#">
-        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.6.5-1 1-1s.4.1.6.2l14.3 8.5c.4.2.6.6.6 1s-.2.8-.6 1L4.6 21.3c-.2.1-.4.2-.6.2-.5 0-1-.4-1-1z"/></svg>
-        <div>
-          <span class="cap">Get it on</span>
-          <span class="name">Google Play</span>
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header">
+            <p class="section-subtitle">Gameplay</p>
+            <h2>Features</h2>
+            <p>Everything you need to live a second life in the city.</p>
         </div>
-      </a>
-      <a class="store-btn" href="#">
-        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.19 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.67 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-        <div>
-          <span class="cap">Download on the</span>
-          <span class="name">App Store</span>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Huge Open World</h3>
+                <p>Seamless streaming performance across a massive sandbox map.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🪙</div>
+                <h3>Realistic Economy</h3>
+                <p>Dynamic market pricing, stocks, and business chains.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎙️</div>
+                <h3>Voice Chat</h3>
+                <p>Immersive crystal clear spatial proximity audio channels.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3>Luxury Houses</h3>
+                <p>Customizable interiors, secure vaults, and properties.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>Vehicle Dealerships</h3>
+                <p>Import luxury supercars with deep performance tuning.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Police Department</h3>
+                <p>Advanced dispatch, warrants, and tactical gear.</p>
+            </div>
         </div>
-      </a>
+    </section>
+
+    <!-- Jobs Section -->
+    <section id="jobs">
+        <div class="section-header">
+            <p class="section-subtitle">Careers</p>
+            <h2>Jobs</h2>
+            <p>Start from the bottom and work your way up to the penthouse.</p>
+        </div>
+        <div class="jobs-grid">
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Taxi Driver</h3>
+                    <span class="job-pay">$1,200 / hr</span>
+                </div>
+                <span class="job-badge badge-easy">Easy</span>
+            </div>
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Courier</h3>
+                    <span class="job-pay">$1,100 / hr</span>
+                </div>
+                <span class="job-badge badge-easy">Easy</span>
+            </div>
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Truck Driver</h3>
+                    <span class="job-pay">$2,400 / hr</span>
+                </div>
+                <span class="job-badge badge-med">Medium</span>
+            </div>
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Mechanic</h3>
+                    <span class="job-pay">$2,800 / hr</span>
+                </div>
+                <span class="job-badge badge-med">Medium</span>
+            </div>
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Police Officer</h3>
+                    <span class="job-pay">$4,500 / hr</span>
+                </div>
+                <span class="job-badge badge-hard">Hard</span>
+            </div>
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Surgeon</h3>
+                    <span class="job-pay">$5,200 / hr</span>
+                </div>
+                <span class="job-badge badge-hard">Hard</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factions Section -->
+    <section id="factions">
+        <div class="section-header">
+            <p class="section-subtitle">Factions</p>
+            <h2>Organizations</h2>
+            <p>Choose your side. Every faction has its own power, rules, and rewards.</p>
+        </div>
+        <div class="factions-grid">
+            <div class="faction-card">
+                <div class="faction-img">[ Government Preview ]</div>
+                <div class="faction-content">
+                    <h3>Government</h3>
+                    <p>Pass laws, manage the city budget, and lead the state administration.</p>
+                </div>
+            </div>
+            <div class="faction-card">
+                <div class="faction-img">[ Police Department Preview ]</div>
+                <div class="faction-content">
+                    <h3>Police Department</h3>
+                    <p>Patrol the streets, pursue criminals, and keep public order secure.</p>
+                </div>
+            </div>
+            <div class="faction-card">
+                <div class="faction-img">[ Medical Preview ]</div>
+                <div class="faction-content">
+                    <h3>Hospital</h3>
+                    <p>Respond to critical emergency dispatch and save lives across the city.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Dashboard -->
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>100,000+</h2>
+                <p>Players</p>
+            </div>
+            <div class="stat-item">
+                <h2>300+</h2>
+                <p>Vehicles</p>
+            </div>
+            <div class="stat-item">
+                <h2>50+</h2>
+                <p>Jobs</p>
+            </div>
+            <div class="stat-item">
+                <h2>1,000+</h2>
+                <p>Businesses</p>
+            </div>
+        </div>
     </div>
 
-  </div>
-</header>
+    <!-- Footer -->
+    <footer>
+        <h3>Grand Varexis RP</h3>
+        <p>Copyright &copy; 2026 Grand Varexis. All rights reserved.</p>
+    </footer>
 
-<!-- FEATURES SECTION -->
-<section class="features-section">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Claim Your Destiny</div>
-      <h2 class="section-title">The City Belongs To You</h2>
-    </div>
-
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🏛️</div>
-        <h3>Luxury Estates</h3>
-        <p>Acquire private mansions, penthouses, and high-end estates across prime city districts.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💼</div>
-        <h3>Crime Syndicate</h3>
-        <p>Command crews, operate businesses, launder wealth, and control city turf.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏎️</div>
-        <h3>Exotic Garages</h3>
-        <p>Build and showcase a fleet of rare supercars, hypercars, and custom rides.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚖️</div>
-        <h3>Living Economy</h3>
-        <p>Every transaction, law, and rivalry is shaped by real players in real-time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span style="font-family:'Cinzel', serif; color:var(--primary-accent); font-weight:700;">Grand Varexis</span>
-        <span>&copy; All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <a href="https://discord.gg/WNbtdvn65" target="_blank" rel="noopener noreferrer">Support Desk</a>
-        <a href="terms.html">User Agreement</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
