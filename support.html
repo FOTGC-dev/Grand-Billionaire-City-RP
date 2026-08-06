@@ -29,18 +29,18 @@
 </nav>
 
 <!-- SUPPORT HERO -->
-<section style="padding: 150px 0 60px; text-align: center;">
+<section style="padding: 150px 0 40px; text-align: center;">
   <div class="wrap">
     <div class="eyebrow">Player Assistance</div>
     <h1 style="font-family:'Cinzel', serif; font-size: clamp(32px, 5vw, 54px); margin-bottom: 16px;">
       How Can We <span style="color:var(--red-brand);">Help You?</span>
     </h1>
-    <p class="hero-desc" style="margin-top: 0;">Search common issues below or submit a direct ticket to our operations team.</p>
+    <p class="hero-desc" style="margin-top: 0;">Get real-time support, file ban appeals, or speak directly with our team on Discord.</p>
   </div>
 </section>
 
 <!-- QUICK HELP CATEGORIES -->
-<section style="padding: 20px 0 60px;">
+<section style="padding: 20px 0 40px;">
   <div class="wrap">
     <div class="feature-grid">
       <div class="feature-card physics-tilt">
@@ -62,29 +62,28 @@
   </div>
 </section>
 
-<!-- FAQ ACCORDION & CONTACT FORM -->
-<section style="padding: 40px 0 100px;">
+<!-- FAQ ACCORDION -->
+<section style="padding: 20px 0 60px;">
   <div class="wrap">
     
-    <!-- FAQ SECTION -->
-    <div class="section-head" style="margin-bottom: 40px;">
+    <div class="section-head" style="margin-bottom: 30px;">
       <div class="eyebrow">Instant Answers</div>
       <h2 class="section-title">Frequently Asked Questions</h2>
     </div>
 
-    <div style="max-width: 760px; margin: 0 auto 80px;" class="faq-container">
+    <div style="max-width: 760px; margin: 0 auto;" class="faq-container">
       
       <details class="faq-item">
         <summary class="faq-question">How do I recover my lost character?</summary>
         <div class="faq-answer">
-          If your account was linked to Google Play, Apple ID, or Discord, simply log in using the same platform on your device. If your account was a guest account, please submit a ticket below with your In-Game Username and approximate Player Level.
+          If your account was linked to Google Play, Apple ID, or Discord, simply log in using the same platform on your device. If your account was a guest account, please join our Discord support desk with your In-Game Username and approximate Player Level.
         </div>
       </details>
 
       <details class="faq-item">
         <summary class="faq-question">I bought currency but didn't receive it. What should I do?</summary>
         <div class="faq-answer">
-          Purchases can take up to 10 minutes to process depending on server load. If your items do not appear after restarting the app, submit a billing ticket below with your Store Order ID (from Apple or Google Play).
+          Purchases can take up to 10 minutes to process depending on server load. If your items do not appear after restarting the app, open a billing ticket on our Discord server with your Store Order ID.
         </div>
       </details>
 
@@ -97,66 +96,27 @@
 
     </div>
 
-    <!-- TICKET FORM -->
-    <div class="section-head" style="margin-bottom: 30px;">
-      <div class="eyebrow">Direct Contact</div>
-      <h2 class="section-title">Submit a Support Ticket</h2>
-    </div>
+  </div>
+</section>
 
-    <div style="max-width: 600px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 24px; padding: 36px 28px; backdrop-filter: blur(20px);">
+<!-- DISCORD SUPPORT DIRECT CALL TO ACTION -->
+<section style="padding: 20px 0 100px;">
+  <div class="wrap">
+    <div style="max-width: 700px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 24px; padding: 48px 28px; text-align: center; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
       
-      <!-- SUCCESS NOTIFICATION BOX (HIDDEN BY DEFAULT) -->
-      <div id="form-success-msg" style="display: none; text-align: center; padding: 20px 0;">
-        <div style="font-size: 42px; margin-bottom: 12px;">🛡️</div>
-        <h3 style="font-family: 'Cinzel', serif; font-size: 22px; color: #FFF; margin-bottom: 8px;">Ticket Dispatched</h3>
-        <p style="color: #A0A0A0; font-size: 13.5px; line-height: 1.6;">Your dossier has been securely transmitted to the Grand Varexis operations team. Check your inbox shortly for updates.</p>
-        <button type="button" onclick="resetSupportForm()" style="background: transparent; color: #E5C158; border: 1px solid rgba(229,193,88,0.3); padding: 10px 20px; border-radius: 99px; margin-top: 20px; cursor: pointer; font-size: 12px; font-weight: 600;">Submit Another Ticket</button>
-      </div>
+      <div style="font-size: 48px; margin-bottom: 16px;">💬</div>
+      <div class="eyebrow">24/7 Operations Channel</div>
+      <h2 style="font-family: 'Cinzel', serif; font-size: clamp(24px, 4vw, 32px); color: #FFF; margin-bottom: 12px;">Connect With Our Support Staff</h2>
+      <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 480px; margin: 0 auto 30px;">
+        Skip the email queues. Head over to our official Discord server to open a private ticket, chat with veteran players, and get instant assistance.
+      </p>
 
-      <!-- THE ACTUAL FORM -->
-      <form action="https://api.web3forms.com/submit" method="POST" id="support-form">
-        
-        <!-- WEB3FORMS ACCESS KEY -->
-        <input type="hidden" name="access_key" value="a068fada-5040-420e-914d-4b0805f58a41">
-        
-        <!-- EMAIL SUBJECT -->
-        <input type="hidden" name="subject" value="New Grand Varexis Player Support Ticket">
-        
-        <!-- SPAM BOT CHECK -->
-        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+      <!-- REPLACE href="#" WITH YOUR ACTUAL DISCORD INVITE LINK -->
+      <a href="https://discord.gg/your-invite-code" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, var(--red-brand) 0%, #A80E0E 100%); color: #FFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 14px; padding: 14px 32px; border-radius: 99px; text-decoration: none; box-shadow: 0 4px 20px var(--red-glow);">
+        Join Discord Support Desk
+      </a>
 
-        <div class="form-group">
-          <label class="form-label">In-Game Name / User ID</label>
-          <input type="text" name="player_id" class="form-input" placeholder="e.g. VarexisBoss#1092" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Issue Category</label>
-          <select name="category" class="form-input" style="background: rgba(10,5,11,0.9);" required>
-            <option value="">Select a topic...</option>
-            <option value="Account & Recovery">Account & Recovery</option>
-            <option value="Billing & Purchases">Billing & Purchases</option>
-            <option value="Bug Report">Bug Report</option>
-            <option value="Other Inquiry">Other Inquiry</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea name="message" class="form-input" rows="4" placeholder="Describe your issue in detail..." required></textarea>
-        </div>
-
-        <button type="submit" id="submit-btn" style="display: block; width: 100%; background: linear-gradient(135deg, var(--red-brand) 0%, #A80E0E 100%); color: #FFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 13px; padding: 12px 20px; border-radius: 99px; border: none; cursor: pointer; margin-top: 15px; box-shadow: 0 4px 20px var(--red-glow); text-align: center;">
-          Submit Ticket
-        </button>
-      </form>
     </div>
-
   </div>
 </section>
 
@@ -179,51 +139,6 @@
 
 <script src="script.js"></script>
 
-<!-- AJAX SUBMISSION HANDLER -->
-<script>
-  const form = document.getElementById('support-form');
-  const successMsg = document.getElementById('form-success-msg');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const submitBtn = document.getElementById('submit-btn');
-    
-    submitBtn.textContent = 'Transmitting...';
-    submitBtn.style.opacity = '0.7';
-
-    fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-    })
-    .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
-        } else {
-            alert(json.message);
-            submitBtn.textContent = 'Submit Ticket';
-            submitBtn.style.opacity = '1';
-        }
-    })
-    .catch(error => {
-        console.log(error);
-        alert("Something went wrong! Check your connection.");
-        submitBtn.textContent = 'Submit Ticket';
-        submitBtn.style.opacity = '1';
-    });
-  });
-
-  function resetSupportForm() {
-    form.reset();
-    form.style.display = 'block';
-    successMsg.style.display = 'none';
-    const submitBtn = document.getElementById('submit-btn');
-    submitBtn.textContent = 'Submit Ticket';
-    submitBtn.style.opacity = '1';
-  }
-</script>
-
 </body>
-</html>
+      </html>
+
