@@ -232,7 +232,7 @@
             background: #ffffff;
         }
 
-        /* --- CINEMATIC PRODUCT HERO SECTION WITH BACKDROP --- */
+        /* --- CINEMATIC PRODUCT HERO SECTION (Original Backdrop Restored) --- */
         header.hero {
             min-height: 100vh;
             display: flex;
@@ -243,7 +243,7 @@
             padding: 160px 8% 100px 8%;
             position: relative;
             background: 
-                linear-gradient(180deg, rgba(5, 2, 2, 0.75) 0%, rgba(5, 2, 2, 0.9) 85%, var(--abyss) 100%),
+                linear-gradient(180deg, rgba(5, 2, 2, 0.65) 0%, rgba(5, 2, 2, 0.85) 85%, var(--abyss) 100%),
                 url('https://lh3.googleusercontent.com/d/1dxpGjZK-bBrtrLqYRjR344zftEN5O5EJ');
             background-size: cover;
             background-position: center;
@@ -367,7 +367,7 @@
             letter-spacing: 1.5px;
         }
 
-        /* --- BENTO-GRID PRODUCT SHOWCASE --- */
+        /* --- BENTO-GRID PRODUCT SHOWCASE WITH USER ASSETS --- */
         section.showcase {
             max-width: 1300px;
             margin: 0 auto 160px auto;
@@ -409,16 +409,46 @@
             padding: 3.5rem 3rem;
             position: relative;
             overflow: hidden;
-            grid-column: span 4;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             min-height: 440px;
             transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        .bento-card.large {
+        /* Bento Card Image Assignments (Using all 6 provided roleplay assets) */
+        .bento-card.card-1 {
             grid-column: span 6;
+            background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.2) 0%, rgba(5, 2, 2, 0.92) 80%), url('https://lh3.googleusercontent.com/d/1aiCkW8_etW-ZZ7G8joWd6q8nNGiF3_1j');
+        }
+
+        .bento-card.card-2 {
+            grid-column: span 6;
+            background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.2) 0%, rgba(5, 2, 2, 0.92) 80%), url('https://lh3.googleusercontent.com/d/1hKeRYhT2yNzEVUN6sHPj1Rc9Zm8323p7');
+        }
+
+        .bento-card.card-3 {
+            grid-column: span 4;
+            background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.2) 0%, rgba(5, 2, 2, 0.92) 80%), url('https://lh3.googleusercontent.com/d/1ecaG1jjbxOj_wyrHvkaebuhDpmv_lQE4');
+        }
+
+        .bento-card.card-4 {
+            grid-column: span 4;
+            background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.2) 0%, rgba(5, 2, 2, 0.92) 80%), url('https://lh3.googleusercontent.com/d/1pFkCly7kXkkr_aCCoiPTVky6jnjvF4sh');
+        }
+
+        .bento-card.card-5 {
+            grid-column: span 4;
+            background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.2) 0%, rgba(5, 2, 2, 0.92) 80%), url('https://lh3.googleusercontent.com/d/1SoXRkDgPZRZyHLoI7mKzZlRAIf0dBV5z');
+        }
+
+        .bento-card.card-6 {
+            grid-column: span 12;
+            min-height: 480px;
+            background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.3) 0%, rgba(5, 2, 2, 0.95) 85%), url('https://lh3.googleusercontent.com/d/1KC8J9d5kFifk0wTuCYjRNHnXf0HGLRhB');
         }
 
         .bento-card:hover {
@@ -430,8 +460,13 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.12) 0%, transparent 70%);
             pointer-events: none;
+        }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
         }
 
         .bento-tag {
@@ -449,12 +484,14 @@
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .bento-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.7;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         /* --- FOOTER --- */
@@ -495,7 +532,7 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .bento-card, .bento-card.large {
+            .bento-card, .bento-card.card-1, .bento-card.card-2, .bento-card.card-3, .bento-card.card-4, .bento-card.card-5, .bento-card.card-6 {
                 grid-column: span 12;
             }
         }
@@ -532,10 +569,10 @@
             <li><a href="#stats">Ledger</a></li>
             <li><a href="#webstore">Royal Vault</a></li>
         </ul>
-        <a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer" class="nav-cta">Community</a>
+        <a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer" class="nav-cta">Ascend Now</a>
     </nav>
 
-    <!-- Hero Section with New Backdrop Image -->
+    <!-- Hero Section with Restored Backdrop -->
     <header class="hero">
         <div class="hero-badge">Next-Generation Immersion</div>
         <h1>Forge Your Dynasty. <span>Claim Eternal Supremacy.</span></h1>
@@ -554,11 +591,11 @@
         </div>
         <div class="stat-item">
             <h3 class="empire-stat-number" data-target="850">0+</h3>
-            <p>Imperial Quests</p>
+            <p>Imperial Armadas</p>
         </div>
         <div class="stat-item">
             <h3 class="empire-stat-number" data-target="150">0+</h3>
-            <p>Ruling Lineage</p>
+            <p>Ruling Houses</p>
         </div>
         <div class="stat-item">
             <h3 class="empire-stat-number" data-target="2500">0+</h3>
@@ -566,32 +603,53 @@
         </div>
     </section>
 
-    <!-- Bento Grid Product Showcase -->
+    <!-- Bento Grid Product Showcase with All User Assets Mapped -->
     <section class="showcase" id="factions">
         <div class="section-header">
             <h2>Designed for Supremacy.</h2>
             <p>Every pillar of Grand Varexis is meticulously engineered to provide an unparalleled roleplay experience.</p>
         </div>
         <div class="bento-grid">
-            <div class="bento-card large">
-                <div>
+            <div class="bento-card card-1">
+                <div class="bento-content">
                     <div class="bento-tag">Sovereign Avatars</div>
                     <h3>Custom Dynastic Regalia</h3>
                     <p>Command the realm with impeccably modeled custom avatars, intricate facial architecture, and elite haute couture tailored exclusively for high-ranking rulers.</p>
                 </div>
             </div>
-            <div class="bento-card large">
-                <div>
+            <div class="bento-card card-2">
+                <div class="bento-content">
                     <div class="bento-tag">Legendary Artifacts</div>
                     <h3>Relics of Power & Contraption</h3>
                     <p>Unearth, acquire, and trade priceless mythical game artifacts and high-stakes technological marvels scattered across forbidden territorial coordinates.</p>
                 </div>
             </div>
-            <div class="bento-card large" id="webstore">
-                <div>
+            <div class="bento-card card-3">
+                <div class="bento-content">
                     <div class="bento-tag">Live Empire Economy</div>
                     <h3>Monopolies & Syndicate Dominions</h3>
                     <p>Control elite global trade networks, accumulate boundless wealth, and wage calculated financial warfare through an advanced player-driven sovereign economy.</p>
+                </div>
+            </div>
+            <div class="bento-card card-4">
+                <div class="bento-content">
+                    <div class="bento-tag">Tactical Strongholds</div>
+                    <h3>Fortified Imperial Citadels</h3>
+                    <p>Construct impenetrable mountain redoubts and heavily guarded bastions to safeguard your house against relentless rival coalitions.</p>
+                </div>
+            </div>
+            <div class="bento-card card-5">
+                <div class="bento-content">
+                    <div class="bento-tag">Royal Decrees</div>
+                    <h3>Absolute Legislative Power</h3>
+                    <p>Enact supreme royal decrees, govern regional provinces, and dictate the legal boundaries of engagement across the entire empire.</p>
+                </div>
+            </div>
+            <div class="bento-card card-6" id="webstore">
+                <div class="bento-content">
+                    <div class="bento-tag">Imperial Supremacy</div>
+                    <h3>The Sovereign Throne Room</h3>
+                    <p>Establish ultimate dominion over the entire realm from the central imperial seat of power, where history and legends are forged.</p>
                 </div>
             </div>
         </div>
@@ -603,7 +661,7 @@
         <ul class="footer-nav">
             <li><a href="#">Imperial Decrees</a></li>
             <li><a href="#">Privacy Charter</a></li>
-            <li><a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer">Community Support</a></li>
+            <li><a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer">Royal Council Support</a></li>
         </ul>
     </footer>
 
