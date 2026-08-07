@@ -3,611 +3,680 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Varexis | Ultimate Mobile Roleplay</title>
+    <title>GRAND VAREXIS // Sovereign Empire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================
-           GRAND VAREXIS DESIGN SYSTEM
-           ========================================== */
+        /* --- APPLE-INSPIRED MINIMALIST & CINEMATIC DESIGN SYSTEM --- */
         :root {
-            --bg-midnight: #0B1020;
-            --bg-card: rgba(17, 24, 39, 0.75);
-            --accent-cyan: #00C8FF;
-            --accent-cyan-glow: rgba(0, 200, 255, 0.4);
-            --accent-royal: #3B82F6;
-            --danger: #FF3B3B;
-            --success: #22C55E;
-            --warning: #F59E0B;
-            --text-main: #FFFFFF;
-            --text-muted: #94A3B8;
-            --border-glass: rgba(0, 200, 255, 0.15);
+            --abyss: #050202;
+            --surface-card: #0c0505;
+            --surface-glass: rgba(18, 7, 7, 0.8);
+            --imperial-red: #ef4444;
+            --scarlet-bright: #f87171;
+            --deep-crimson: #991b1b;
+            --apple-gradient: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            --red-gradient: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #991b1b 100%);
+            --accent-glow: rgba(239, 68, 68, 0.25);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-red: rgba(239, 68, 68, 0.3);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * {
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(135deg, #0B1020 0%, #111827 60%, #1E3A8A 100%);
-            background-attachment: fixed;
+            background-color: var(--abyss);
             color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
-        /* ==========================================
-           NAVIGATION BAR
-           ========================================== */
-        header {
+        /* --- IMMERSIVE CINEMATIC LOADER SCREEN --- */
+        #empire-loader {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(11, 16, 32, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 14px 20px;
+            inset: 0;
+            background: var(--abyss);
+            z-index: 9999;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: opacity 1.2s cubic-bezier(0.7, 0, 0.3, 1), visibility 1.2s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-main);
+        #empire-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
-        .logo-badge {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-royal));
-            border-radius: 10px;
+        .loader-crest-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
-            font-size: 18px;
-            box-shadow: 0 0 12px var(--accent-cyan-glow);
+            margin-bottom: 2.5rem;
         }
 
-        .nav-logo span {
+        .loader-ring {
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(239, 68, 68, 0.15);
+            border-top: 2px solid var(--scarlet-bright);
+            border-radius: 50%;
+            animation: spinLoader 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        .loader-ring-inner {
+            position: absolute;
+            inset: 10px;
+            border: 2px dashed rgba(248, 113, 113, 0.25);
+            border-bottom: 2px dashed var(--imperial-red);
+            border-radius: 50%;
+            animation: spinLoaderReverse 3.5s linear infinite;
+        }
+
+        @keyframes spinLoader {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spinLoaderReverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .loader-logo-img {
+            width: 55px;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 15px var(--accent-glow));
+            animation: pulseCrest 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseCrest {
+            0% { opacity: 0.6; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .loader-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
             font-weight: 800;
-            font-size: 18px;
-            letter-spacing: 0.5px;
+            letter-spacing: 6px;
+            color: var(--text-main);
             text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .loader-progress-track {
+            width: 280px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .loader-progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--red-gradient);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transition: width 0.1s linear;
+        }
+
+        .loader-status-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            height: 1.2rem;
+        }
+
+        /* --- APPLE-STYLE MINIMALIST NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: rgba(5, 2, 2, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
         }
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 3rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 8px var(--accent-cyan);
+            color: var(--text-main);
         }
 
-        .discord-btn {
-            background: rgba(0, 200, 255, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid var(--accent-cyan);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
+        .nav-cta {
+            background: var(--text-main);
+            color: var(--abyss);
+            font-weight: 600;
+            padding: 0.55rem 1.4rem;
+            border-radius: 99px;
             text-decoration: none;
-            box-shadow: 0 0 10px rgba(0, 200, 255, 0.2);
-            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            transition: transform 0.3s var(--transition-smooth), background 0.3s ease;
         }
 
-        .discord-btn:hover {
-            background: var(--accent-cyan);
-            color: var(--bg-midnight);
-            box-shadow: 0 0 20px var(--accent-cyan);
+        .nav-cta:hover {
+            transform: scale(1.04);
+            background: #ffffff;
         }
 
-        /* ==========================================
-           HERO SECTION
-           ========================================== */
-        .hero {
-            height: 100vh;
+        /* --- CINEMATIC PRODUCT HERO SECTION WITH BACKDROP --- */
+        header.hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 160px 8% 100px 8%;
             position: relative;
+            background: 
+                linear-gradient(180deg, rgba(5, 2, 2, 0.75) 0%, rgba(5, 2, 2, 0.9) 85%, var(--abyss) 100%),
+                url('https://lh3.googleusercontent.com/d/1dxpGjZK-bBrtrLqYRjR344zftEN5O5EJ');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        .hero-emblem {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-royal));
-            border-radius: 24px;
-            display: flex;
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin-bottom: 24px;
-            box-shadow: 0 0 30px var(--accent-cyan-glow);
-            animation: pulseGlow 3s infinite alternate;
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px var(--accent-cyan-glow); }
-            100% { box-shadow: 0 0 35px rgba(0, 200, 255, 0.8); }
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 6vw, 64px);
-            font-weight: 900;
+            gap: 8px;
+            padding: 0.4rem 1rem;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--border-red);
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 12px;
-            background: linear-gradient(to right, #fff, var(--accent-cyan));
+            color: var(--scarlet-bright);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        header.hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            max-width: 1100px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        header.hero h1 span {
+            background: var(--red-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
         }
 
-        .hero p {
+        header.hero p {
             color: var(--text-muted);
-            font-size: 16px;
-            max-width: 500px;
-            margin-bottom: 30px;
+            font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+            max-width: 680px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* ==========================================
-           SECTIONS & COMMON STYLES
-           ========================================== */
-        section {
+        .hero-actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--imperial-red);
+            color: #ffffff;
+            padding: 0.9rem 2.2rem;
+            border-radius: 99px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.3s var(--transition-smooth), background 0.3s ease;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.03);
+            background: #dc2626;
+        }
+
+        .btn-secondary {
+            background: rgba(5, 2, 2, 0.6);
+            backdrop-filter: blur(10px);
+            color: var(--text-main);
+            padding: 0.9rem 2.2rem;
+            border-radius: 99px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- APPLE-STYLE PRODUCT STATS --- */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
+            margin: 0 auto 140px auto;
+            padding: 0 8%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--apple-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* --- BENTO-GRID PRODUCT SHOWCASE --- */
+        section.showcase {
+            max-width: 1300px;
+            margin: 0 auto 160px auto;
+            padding: 0 8%;
+            width: 100%;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-subtitle {
-            color: var(--accent-cyan);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 5rem;
         }
 
         .section-header h2 {
-            font-size: 32px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
         }
 
         .section-header p {
             color: var(--text-muted);
-            font-size: 15px;
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* ==========================================
-           FEATURE CARDS GRID (Ref: 1000423352.png)
-           ========================================== */
-        .features-grid {
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
         }
 
-        .feature-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 24px;
+        .bento-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 3.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+            grid-column: span 4;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.3s ease;
+            justify-content: flex-end;
+            min-height: 440px;
+            transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px var(--accent-cyan-glow);
+        .bento-card.large {
+            grid-column: span 6;
         }
 
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(0, 200, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-cyan);
-            font-size: 20px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(0, 200, 255, 0.2);
+        .bento-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-red);
         }
 
-        .feature-card h3 {
-            font-size: 16px;
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .bento-tag {
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--scarlet-bright);
+            margin-bottom: 1rem;
         }
 
-        .feature-card p {
+        .bento-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .bento-card p {
             color: var(--text-muted);
-            font-size: 13px;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        /* ==========================================
-           JOBS GRID (Ref: 100042330.png style)
-           ========================================== */
-        .jobs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 16px;
-        }
-
-        .job-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 20px;
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid var(--border-subtle);
+            padding: 4rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .job-card:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 15px var(--accent-cyan-glow);
-        }
-
-        .job-info h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .job-pay {
-            color: var(--success);
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .job-badge {
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .badge-easy { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid rgba(34, 197, 94, 0.3); }
-        .badge-med { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
-        .badge-hard { background: rgba(255, 59, 59, 0.15); color: var(--danger); border: 1px solid rgba(255, 59, 59, 0.3); }
-
-        /* ==========================================
-           FACTIONS CARDS (Ref: 1000423351.png)
-           ========================================== */
-        .factions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 20px;
-        }
-
-        .faction-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faction-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-royal);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .faction-img {
-            width: 100%;
-            height: 160px;
-            background: #1e293b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .faction-content {
-            padding: 20px;
-        }
-
-        .faction-content h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin-bottom: 8px;
-        }
-
-        .faction-content p {
-            color: var(--text-muted);
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        /* ==========================================
-           STATS DASHBOARD (Ref: 1000423350.png)
-           ========================================== */
-        .stats-section {
-            background: rgba(17, 24, 39, 0.6);
-            border-top: 1px solid var(--border-glass);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 60px 20px;
-            margin: 40px 0;
-        }
-
-        .stats-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .stat-item h2 {
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--text-main);
-            text-shadow: 0 0 20px var(--accent-cyan-glow);
-            margin-bottom: 4px;
-        }
-
-        .stat-item p {
-            color: var(--accent-cyan);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* ==========================================
-           FOOTER
-           ========================================== */
-        footer {
-            background: var(--bg-midnight);
-            text-align: center;
-            padding: 50px 20px;
-            border-top: 1px solid var(--border-glass);
-        }
-
-        footer h3 {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--abyss);
         }
 
         footer p {
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 0.85rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .footer-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .bento-card, .bento-card.large {
+                grid-column: span 12;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header>
-        <nav>
-            <a href="#home" class="nav-logo">
-                <div class="logo-badge">GV</div>
-                <span>Grand Varexis</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#jobs">Jobs</a></li>
-                <li><a href="#factions">Factions</a></li>
-            </ul>
-            <a href="#" class="discord-btn">Join Discord</a>
-        </nav>
+    <!-- Cinematic Immersive Loader Screen -->
+    <div id="empire-loader">
+        <div class="loader-crest-container">
+            <div class="loader-ring"></div>
+            <div class="loader-ring-inner"></div>
+            <img src="https://lh3.googleusercontent.com/d/18p7GwIjHcYjdIPUKNIVJQ_CIDe-1c60a" alt="Grand Varexis Logo" class="loader-logo-img">
+        </div>
+        <div class="loader-title">Grand Varexis</div>
+        <div class="loader-progress-track">
+            <div class="loader-progress-fill" id="loaderProgress"></div>
+        </div>
+        <div class="loader-status-text" id="loaderStatus">Initializing Crimson Atmosphere...</div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#" class="nav-brand">
+            <img src="https://lh3.googleusercontent.com/d/18p7GwIjHcYjdIPUKNIVJQ_CIDe-1c60a" alt="Grand Varexis Logo" class="brand-logo">
+            Grand Varexis
+        </a>
+        <ul class="nav-links">
+            <li><a href="#factions">Sovereignty</a></li>
+            <li><a href="#stats">Ledger</a></li>
+            <li><a href="#webstore">Royal Vault</a></li>
+        </ul>
+        <a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer" class="nav-cta">Ascend Now</a>
+    </nav>
+
+    <!-- Hero Section with New Backdrop Image -->
+    <header class="hero">
+        <div class="hero-badge">Next-Generation Immersion</div>
+        <h1>Forge Your Dynasty. <span>Claim Eternal Supremacy.</span></h1>
+        <p>A masterpiece of virtual engineering and immersive roleplay, crafted with uncompromising precision and elegance.</p>
+        <div class="hero-actions">
+            <a href="#factions" class="btn-primary">Explore Realm</a>
+            <a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer" class="btn-secondary">Join Royal Court</a>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-emblem">👑</div>
-        <h1>Grand Varexis</h1>
-        <p>Experience the ultimate mobile roleplay adventure. Build your career, own businesses, and write your story.</p>
-        <a href="#" class="discord-btn" style="padding: 12px 28px; font-size: 15px;">Join Discord</a>
+    <!-- Stats Strip -->
+    <section class="stats-strip" id="stats">
+        <div class="stat-item">
+            <h3 class="empire-stat-number" data-target="500000">0+</h3>
+            <p>Sovereign Citizens</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="empire-stat-number" data-target="850">0+</h3>
+            <p>Imperial Armadas</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="empire-stat-number" data-target="150">0+</h3>
+            <p>Ruling Houses</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="empire-stat-number" data-target="2500">0+</h3>
+            <p>Conquests Won</p>
+        </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features">
+    <!-- Bento Grid Product Showcase -->
+    <section class="showcase" id="factions">
         <div class="section-header">
-            <p class="section-subtitle">Gameplay</p>
-            <h2>Features</h2>
-            <p>Everything you need to live a second life in the city.</p>
+            <h2>Designed for Supremacy.</h2>
+            <p>Every pillar of Grand Varexis is meticulously engineered to provide an unparalleled roleplay experience.</p>
         </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3>Huge Open World</h3>
-                <p>Seamless streaming performance across a massive sandbox map.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🪙</div>
-                <h3>Realistic Economy</h3>
-                <p>Dynamic market pricing, stocks, and business chains.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎙️</div>
-                <h3>Voice Chat</h3>
-                <p>Immersive crystal clear spatial proximity audio channels.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏠</div>
-                <h3>Luxury Houses</h3>
-                <p>Customizable interiors, secure vaults, and properties.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚗</div>
-                <h3>Vehicle Dealerships</h3>
-                <p>Import luxury supercars with deep performance tuning.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Police Department</h3>
-                <p>Advanced dispatch, warrants, and tactical gear.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Jobs Section -->
-    <section id="jobs">
-        <div class="section-header">
-            <p class="section-subtitle">Careers</p>
-            <h2>Jobs</h2>
-            <p>Start from the bottom and work your way up to the penthouse.</p>
-        </div>
-        <div class="jobs-grid">
-            <div class="job-card">
-                <div class="job-info">
-                    <h3>Taxi Driver</h3>
-                    <span class="job-pay">$1,200 / hr</span>
-                </div>
-                <span class="job-badge badge-easy">Easy</span>
-            </div>
-            <div class="job-card">
-                <div class="job-info">
-                    <h3>Courier</h3>
-                    <span class="job-pay">$1,100 / hr</span>
-                </div>
-                <span class="job-badge badge-easy">Easy</span>
-            </div>
-            <div class="job-card">
-                <div class="job-info">
-                    <h3>Truck Driver</h3>
-                    <span class="job-pay">$2,400 / hr</span>
-                </div>
-                <span class="job-badge badge-med">Medium</span>
-            </div>
-            <div class="job-card">
-                <div class="job-info">
-                    <h3>Mechanic</h3>
-                    <span class="job-pay">$2,800 / hr</span>
-                </div>
-                <span class="job-badge badge-med">Medium</span>
-            </div>
-            <div class="job-card">
-                <div class="job-info">
-                    <h3>Police Officer</h3>
-                    <span class="job-pay">$4,500 / hr</span>
-                </div>
-                <span class="job-badge badge-hard">Hard</span>
-            </div>
-            <div class="job-card">
-                <div class="job-info">
-                    <h3>Surgeon</h3>
-                    <span class="job-pay">$5,200 / hr</span>
-                </div>
-                <span class="job-badge badge-hard">Hard</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Factions Section -->
-    <section id="factions">
-        <div class="section-header">
-            <p class="section-subtitle">Factions</p>
-            <h2>Organizations</h2>
-            <p>Choose your side. Every faction has its own power, rules, and rewards.</p>
-        </div>
-        <div class="factions-grid">
-            <div class="faction-card">
-                <div class="faction-img">[ Government Preview ]</div>
-                <div class="faction-content">
-                    <h3>Government</h3>
-                    <p>Pass laws, manage the city budget, and lead the state administration.</p>
+        <div class="bento-grid">
+            <div class="bento-card large">
+                <div>
+                    <div class="bento-tag">Sovereign Avatars</div>
+                    <h3>Custom Dynastic Regalia</h3>
+                    <p>Command the realm with impeccably modeled custom avatars, intricate facial architecture, and elite haute couture tailored exclusively for high-ranking rulers.</p>
                 </div>
             </div>
-            <div class="faction-card">
-                <div class="faction-img">[ Police Department Preview ]</div>
-                <div class="faction-content">
-                    <h3>Police Department</h3>
-                    <p>Patrol the streets, pursue criminals, and keep public order secure.</p>
+            <div class="bento-card large">
+                <div>
+                    <div class="bento-tag">Legendary Artifacts</div>
+                    <h3>Relics of Power & Contraption</h3>
+                    <p>Unearth, acquire, and trade priceless mythical game artifacts and high-stakes technological marvels scattered across forbidden territorial coordinates.</p>
                 </div>
             </div>
-            <div class="faction-card">
-                <div class="faction-img">[ Medical Preview ]</div>
-                <div class="faction-content">
-                    <h3>Hospital</h3>
-                    <p>Respond to critical emergency dispatch and save lives across the city.</p>
+            <div class="bento-card large" id="webstore">
+                <div>
+                    <div class="bento-tag">Live Empire Economy</div>
+                    <h3>Monopolies & Syndicate Dominions</h3>
+                    <p>Control elite global trade networks, accumulate boundless wealth, and wage calculated financial warfare through an advanced player-driven sovereign economy.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Stats Dashboard -->
-    <div class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h2>100,000+</h2>
-                <p>Players</p>
-            </div>
-            <div class="stat-item">
-                <h2>300+</h2>
-                <p>Vehicles</p>
-            </div>
-            <div class="stat-item">
-                <h2>50+</h2>
-                <p>Jobs</p>
-            </div>
-            <div class="stat-item">
-                <h2>1,000+</h2>
-                <p>Businesses</p>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
-        <h3>Grand Varexis RP</h3>
-        <p>Copyright &copy; 2026 Grand Varexis. All rights reserved.</p>
+        <p>&copy; 2026 Grand Varexis Sovereign Empire. All rights reserved.</p>
+        <ul class="footer-nav">
+            <li><a href="#">Imperial Decrees</a></li>
+            <li><a href="#">Privacy Charter</a></li>
+            <li><a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer">Royal Council Support</a></li>
+        </ul>
     </footer>
 
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Immersive Multi-Stage Cinematic Loader Engine
+            const loader = document.getElementById('empire-loader');
+            const loaderProgress = document.getElementById('loaderProgress');
+            const loaderStatus = document.getElementById('loaderStatus');
+            
+            const stages = [
+                { percent: 20, text: "Initializing Crimson Atmosphere..." },
+                { percent: 45, text: "Forging Imperial Lineages..." },
+                { percent: 75, text: "Calibrating Crimson Vault Relics..." },
+                { percent: 100, text: "The Realm is Open." }
+            ];
+
+            let currentStage = 0;
+            let currentWidth = 0;
+
+            const updateLoader = () => {
+                if (currentStage < stages.length) {
+                    const targetPercent = stages[currentStage].percent;
+                    loaderStatus.textContent = stages[currentStage].text;
+                    
+                    const interval = setInterval(() => {
+                        if (currentWidth < targetPercent) {
+                            currentWidth++;
+                            loaderProgress.style.width = currentWidth + '%';
+                        } else {
+                            clearInterval(interval);
+                            currentStage++;
+                            setTimeout(updateLoader, 350);
+                        }
+                    }, 12);
+                } else {
+                    setTimeout(() => {
+                        loader.classList.add('fade-out');
+                    }, 400);
+                }
+            };
+
+            setTimeout(updateLoader, 200);
+
+            // Counter Animation Engine
+            const statNumbers = document.querySelectorAll('.empire-stat-number');
+            
+            const animateCounters = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetElement = entry.target;
+                        const targetValue = parseInt(targetElement.getAttribute('data-target'));
+                        let currentValue = 0;
+                        
+                        const timer = setInterval(() => {
+                            currentValue += Math.ceil(targetValue / 40);
+                            if (currentValue >= targetValue) {
+                                targetElement.textContent = targetValue.toLocaleString() + "+";
+                                clearInterval(timer);
+                            } else {
+                                targetElement.textContent = currentValue.toLocaleString() + "+";
+                            }
+                        }, 25);
+
+                        observer.unobserve(targetElement);
+                    }
+                });
+            };
+
+            const statObserver = new IntersectionObserver(animateCounters, { threshold: 0.3 });
+            statNumbers.forEach(stat => statObserver.observe(stat));
+        });
+    </script>
 </body>
 </html>
