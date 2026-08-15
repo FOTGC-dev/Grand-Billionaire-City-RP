@@ -916,9 +916,9 @@
     <footer>
         <p>&copy; 2026 Grand Billionaire City RP. All rights reserved.</p>
         <ul class="footer-nav">
-            <li><a href="#factions">Sovereignty</a></li>
-            <li><a href="#stats">Ledger</a></li>
-            <li><a href="https://discord.gg/8yc7EpUCF" target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="#factions">Faction</a></li>
+            <li><a href="#stats">Stat</a></li>
+            <li><a href="https://discord.gg/WNbtdvn65" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
         </ul>
     </footer>
 
@@ -1014,7 +1014,7 @@
         setInterval(() => {
             const counterEl = document.getElementById('playerCounter');
             if(counterEl) {
-                const basePlayers = 240;
+                const basePlayers = 840;
                 const fluctuation = Math.floor(Math.random() * 15) - 7;
                 counterEl.innerText = `${basePlayers + fluctuation} Online`;
             }
