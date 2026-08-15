@@ -1,39 +1,50 @@
-// Cinematic Loader Handler
-window.addEventListener('load', () => {
-    const loader = document.getElementById('empire-loader');
-    const progress = document.getElementById('loaderProgress');
-    const status = document.getElementById('loaderStatus');
-    
-    let width = 0;
-    const interval = setInterval(() => {
-        width += Math.floor(Math.random() * 18) + 6;
-        if (width >= 100) {
-            width = 100;
-            clearInterval(interval);
-            status.textContent = "Supremacy Achieved.";
-            setTimeout(() => {
-                loader.classList.add('fade-out');
-            }, 350);
+// Dynamic Component Loader for Header and Footer
+document.addEventListener("DOMContentLoaded", () => {
+    async function loadComponent(id, file) {
+        const element = document.getElementById(id);
+        if (element) {
+            try {
+                const response = await fetch(file);
+                if (response.ok) {
+                    element.innerHTML = await response.text();
+                    
+                    // Re-bind mobile menu listeners if header is loaded dynamically
+                    if (id === 'site-header') {
+                        initMobileMenu();
+                    }
+                }
+            } catch (error) {
+                console.error(`Error loading ${file}:`, error);
+            }
         }
-        progress.style.width = width + '%';
-        if(width > 50) status.textContent = "Calibrating Fluid Dynamics...";
-    }, 80);
+    }
+
+    loadComponent('site-header', 'header.html');
+    loadComponent('site-footer', 'footer.html');
 });
 
-// Mobile Menu Drawer Handler
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileDrawer = document.getElementById('mobileDrawer');
-const mobileLinks = document.querySelectorAll('.mobile-link');
+// Re-attach Mobile Menu Functionality after dynamic injection
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenuBtn.classList.toggle('active');
-    mobileDrawer.classList.toggle('open');
-    document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
-});
+    if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileDrawer.classList.toggle('open');
+            document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
+        });
 
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+}
         mobileDrawer.classList.remove('open');
         document.body.style.overflow = '';
     });
