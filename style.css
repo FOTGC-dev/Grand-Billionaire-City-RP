@@ -655,7 +655,7 @@ section.showcase {
 
 .bento-card.card-5 {
     grid-column: span 4;
-    background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.15) 0%, rgba(5, 2, 2, 0.94) 80%), url('https://lh3.googleusercontent.com/d/1SoXRkDgPZRZyHLoI7mKzZlRAIf0dBV5z');
+    background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.15) 0%, rgba(5, 2, 2, 0.94) 80%), url('assets/images/family_alignment.png');
 }
 
 .bento-card.card-6 {
