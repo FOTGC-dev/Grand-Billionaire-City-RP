@@ -645,12 +645,12 @@ section.showcase {
 
 .bento-card.card-3 {
     grid-column: span 4;
-    background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.15) 0%, rgba(5, 2, 2, 0.94) 80%), url('assets/images/estate.png');
+    background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.15) 0%, rgba(5, 2, 2, 0.94) 80%), url('assets/images/estate2.png');
 }
 
 .bento-card.card-4 {
     grid-column: span 4;
-    background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.15) 0%, rgba(5, 2, 2, 0.94) 80%), url('https://lh3.googleusercontent.com/d/1pFkCly7kXkkr_aCCoiPTVky6jnjvF4sh');
+    background-image: linear-gradient(180deg, rgba(5, 2, 2, 0.15) 0%, rgba(5, 2, 2, 0.94) 80%), url('assets/images/Economics.png');
 }
 
 .bento-card.card-5 {
