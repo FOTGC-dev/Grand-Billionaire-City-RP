@@ -1,112 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support Desk — Grand Varexis</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support // Grand Billionaire City RP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .support-hero {
+            padding: 12rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .support-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        .support-hero p {
+            color: #94a3b8;
+            font-size: 1rem;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Discord CTA Banner */
+        .support-cta {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+            padding: 0 2rem;
+        }
+        .support-cta-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-red, rgba(239, 68, 68, 0.35));
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            backdrop-filter: blur(10px);
+        }
+        .support-cta-text h3 {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        .support-cta-text p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .support-faq-container {
+            max-width: 800px;
+            margin: 0 auto 8rem;
+            padding: 0 2rem;
+        }
+        .support-faq-heading {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .faq-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: var(--border-red, rgba(239, 68, 68, 0.35));
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            color: #f8fafc;
+        }
+        .faq-question .faq-icon {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--scarlet-bright, #f87171);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        .faq-item.open .faq-question .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .faq-answer-inner {
+            padding: 0 2rem 1.5rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+    </style>
 </head>
 <body>
 
-<div class="ambient-glow-top"></div>
+    <!-- Injected Header Placeholder -->
+    <div id="site-header"></div>
 
-<!-- NAVIGATION -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="brand-logo">
-      <span class="grand">Grand</span>
-      <span class="varexis">Varexis</span>
-    </a>
-    <div class="nav-right">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="index.html#download" class="nav-btn">Play Now</a>
-    </div>
-  </div>
-</nav>
+    <!-- Support Hero -->
+    <header class="support-hero">
+        <h1>Support</h1>
+        <p>Answers to the questions we get asked most. Can't find what you need? Our team is on Discord.</p>
+    </header>
 
-<!-- SUPPORT HERO -->
-<section style="padding: 150px 0 40px; text-align: center;">
-  <div class="wrap">
-    <div class="eyebrow">Player Assistance</div>
-    <h1 style="font-family:'Cinzel', serif; font-size: clamp(32px, 5vw, 54px); margin-bottom: 16px;">
-      How Can We <span style="color:var(--primary-accent);">Help You?</span>
-    </h1>
-    <p class="hero-desc" style="margin-top: 0;">Get real-time support, file ban appeals, or speak directly with our team on Discord.</p>
-  </div>
-</section>
-
-<!-- FAQ SECTION -->
-<section style="padding: 20px 0 60px;">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom: 30px;">
-      <div class="eyebrow">Instant Answers</div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-    </div>
-
-    <div style="max-width: 760px; margin: 0 auto;" class="faq-container">
-      
-      <details class="faq-item">
-        <summary class="faq-question">How do I recover my lost character?</summary>
-        <div class="faq-answer">
-          If your account was linked to Google Play, Apple ID, or Discord, simply log in using the same platform on your device. If your account was a guest account, please join our Discord support desk with your In-Game Username and approximate Player Level.
+    <!-- Discord CTA -->
+    <section class="support-cta">
+        <div class="support-cta-panel">
+            <div class="support-cta-text">
+                <h3>Need to talk to someone?</h3>
+                <p>Open a ticket or ask in our community for anything not covered below.</p>
+            </div>
+            <a href="https://discord.gg/WNbtdvn65" target="_blank" rel="noopener noreferrer" class="btn-primary">Join Discord</a>
         </div>
-      </details>
+    </section>
 
-      <details class="faq-item">
-        <summary class="faq-question">I bought currency but didn't receive it. What should I do?</summary>
-        <div class="faq-answer">
-          Purchases can take up to 10 minutes to process depending on server load. If your items do not appear after restarting the app, open a billing ticket on our Discord server with your Store Order ID.
+    <!-- FAQ Section -->
+    <main class="support-faq-container">
+        <h2 class="support-faq-heading">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How do I join Grand Billionaire City RP?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Join our Discord server first — that's where you'll find the connection details, community guidelines, and any whitelist steps you'll need to complete before jumping in.
+                </div>
+            </div>
         </div>
-      </details>
 
-      <details class="faq-item">
-        <summary class="faq-question">What are the minimum system requirements?</summary>
-        <div class="faq-answer">
-          Grand Varexis requires a minimum of 3GB RAM, Android 8.0+ or iOS 13.0+, and an active internet connection for stable gameplay.
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How does whitelisting work?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Whitelisting details and requirements are posted in our Discord server. Check the relevant channel there for the current process and status.
+                </div>
+            </div>
         </div>
-      </details>
 
-    </div>
-  </div>
-</section>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>I think I was banned unfairly. What do I do?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Open a ticket in our Discord server and our staff team will review your case. Please include your character name and any relevant details.
+                </div>
+            </div>
+        </div>
 
-<!-- DISCORD CTA -->
-<section style="padding: 20px 0 100px;">
-  <div class="wrap">
-    <div style="max-width: 700px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: 20px; padding: 48px 28px; text-align: center; backdrop-filter: blur(20px);">
-      <div style="font-size: 48px; margin-bottom: 16px;">💬</div>
-      <div class="eyebrow">24/7 Operations Channel</div>
-      <h2 style="font-family: 'Cinzel', serif; font-size: clamp(24px, 4vw, 32px); color: #FFF; margin-bottom: 12px;">Connect With Our Support Staff</h2>
-      <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 480px; margin: 0 auto 30px;">
-        Skip the email queues. Head over to our official Discord server to open a private ticket and get instant assistance.
-      </p>
-      <a href="https://discord.gg/WNbtdvn65" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent)); color: #0B1020; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 14px 32px; border-radius: 99px; text-decoration: none; box-shadow: 0 4px 20px var(--primary-glow);">
-        Join Discord Support Desk
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How do I report a bug or another player?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Use the dedicated reporting channel in our Discord server. Include as much detail as possible — screenshots or clips help our team resolve things faster.
+                </div>
+            </div>
+        </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span style="font-family:'Cinzel', serif; color:var(--primary-accent); font-weight:700;">Grand Varexis</span>
-        <span>&copy; All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="terms.html">User Agreement</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Can I get a refund on a purchase?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Refund requests are handled on a case-by-case basis. Reach out through our Discord server with your order details and our team will assist you.
+                </div>
+            </div>
+        </div>
 
-<script src="script.js"></script>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How do I apply for staff or a faction?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Applications for staff positions and factions are posted and managed through our Discord server. Keep an eye on the announcements channel for open recruitment.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Injected Footer Placeholder -->
+    <div id="site-footer"></div>
+
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('open');
+                        openItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+
+                if (isOpen) {
+                    item.classList.remove('open');
+                    answer.style.maxHeight = null;
+                } else {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
